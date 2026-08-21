@@ -1,4 +1,4 @@
-#*Challenge 1: Sorting**
+#Challenge 1: Sorting**
 
 
 # Step 1: Get Input
@@ -17,7 +17,9 @@ result = ",".join(words_list)
 print(result)
 
 
+
 #Challenge 2: Longest Word**
+
 
 def longest_word(sentence):
     # Step 2: Split the sentence into words by spaces
@@ -45,4 +47,3 @@ print(
 print(
     longest_word("Forgetfulness is by all means powerless!")
 )  # Output: "Forgetfulness"
-
