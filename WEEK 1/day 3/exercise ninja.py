@@ -7,6 +7,7 @@ cars_string = "Volkswagen, Toyota, Ford Motor, Honda, Chevrolet"
 # 1. Convert string to a list using split()
 cars_list = [car.strip() for car in cars_string.split(",")]
 
+
 # 2. Print count of manufacturers
 print(f"Number of manufacturers in the list: {len(cars_list)}")
 
