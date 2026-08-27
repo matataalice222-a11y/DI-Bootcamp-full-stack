@@ -3,9 +3,6 @@
 
 ### 2. Python code
 
-
-from googletrans import Translator
-
 french_words = ["Bonjour", "Au revoir", "Bienvenue", "A bientôt"]
 
 translator = Translator()
