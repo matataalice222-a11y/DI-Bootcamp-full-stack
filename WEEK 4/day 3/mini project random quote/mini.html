@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="mini.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <p class="eyebrow">Daily inspiration</p>
+            <h1>My Quotes</h1>
+            <p class="subtitle">Motivational, inspirational, and more.</p>
+        </header>
+
+        <section id="quote-section" aria-live="polite">
+            <p id="quote-text">Click the button below to generate a quote.</p>
+            <p id="quote-author"></p>
+        </section>
+
+        <button class="primary-button" id="generate-btn" type="button">Generate quote</button>
+
+        <section id="action-buttons" class="actions" hidden aria-label="Quote actions">
+            <button id="char-with-space" type="button">Count characters</button>
+            <button id="char-no-space" type="button">Count letters</button>
+            <button id="word-count" type="button">Count words</button>
+            <button id="like-btn" type="button">Like <span id="like-count">0</span></button>
+        </section>
+        <p id="stat-display" class="status" aria-live="polite"></p>
+
+        <div class="forms-grid">
+            <section class="form-section">
+                <h2>Add a quote</h2>
+                <form id="add-quote-form">
+                    <label for="new-quote">Quote</label>
+                    <textarea id="new-quote" rows="3" required></textarea>
+                    <label for="new-author">Author</label>
+                    <input id="new-author" type="text" required>
+                    <button type="submit">Add quote</button>
+                </form>
+            </section>
+
+            <section class="form-section">
+                <h2>Find an author</h2>
+                <form id="filter-form">
+                    <label for="filter-author">Author name</label>
+                    <input id="filter-author" type="text" required>
+                    <button type="submit">Search quotes</button>
+                </form>
+                <div id="filter-nav" class="navigation" hidden>
+                    <button id="prev-btn" type="button">Previous</button>
+                    <button id="next-btn" type="button">Next</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="mini.js"></script>
+</body>
+</html>
