@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex App</title>
+    <!-- FontAwesome for loading icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pokedex-container">
+        <!-- Screen displaying Pokémon data -->
+        <div class="screen">
+            <div id="loading" class="hidden">
+                <i class="fas fa-spinner fa-spin fa-3x"></i>
+                <p>Loading Pokémon...</p>
+            </div>
+
+            <div id="error-message" class="hidden">
+                <p>Oh no! That Pokemon isn’t available…</p>
+            </div>
+
+            <div id="pokemon-info">
+                <img id="pokemon-image" src="" alt="Pokémon Image">
+                <h2 id="pokemon-name">Name</h2>
+                <p><strong>ID:</strong> <span id="pokemon-id">#000</span></p>
+                <p><strong>Height:</strong> <span id="pokemon-height"></span></p>
+                <p><strong>Weight:</strong> <span id="pokemon-weight"></span></p>
+                <p><strong>Type:</strong> <span id="pokemon-type"></span></p>
+            </div>
+        </div>
+
+        <!-- Controls: Previous, Random, Next -->
+        <div class="controls">
+            <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button id="random-btn">Random</button>
+            <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

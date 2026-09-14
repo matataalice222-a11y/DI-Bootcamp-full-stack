@@ -1,0 +1,118 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.converter-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 380px;
+}
+
+h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group, .select-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.currency-selectors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-group {
+    flex: 1;
+}
+
+#switch-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+#switch-btn:hover {
+    background-color: #0056b3;
+}
+
+#convert-btn {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+#convert-btn:hover {
+    background-color: #218838;
+}
+
+#result-container {
+    margin-top: 20px;
+    background-color: #e9f7ef;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #d4edda;
+}
+
+#result-text {
+    margin: 0;
+    color: #155724;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#error-msg {
+    color: #dc3545;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
