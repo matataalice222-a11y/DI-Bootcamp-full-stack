@@ -57,4 +57,3 @@ const readFile = require("./read-file");
 console.log(greet("Alice"));   // Greeting
 showMessage();                 // Colorful message
 readFile();                    // File content
-```
