@@ -157,6 +157,3 @@ app.delete("/api/todos/:id", (req, res) => {
 
 app.listen(5000, () => console.log("Todo API running on port 5000"));
 ```
-
----
-
