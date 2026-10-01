@@ -1,0 +1,84 @@
+.page {
+  width: min(100% - 40px, 860px);
+  margin: 0 auto;
+  padding: 52px 0 80px;
+  text-align: left;
+}
+
+.page-header {
+  padding-bottom: 28px;
+  border-bottom: 3px solid #e36f4b;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: #155f95;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #182a35;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.page-header > p:last-child {
+  margin-top: 12px;
+}
+
+.exercise-section {
+  padding: 28px 0;
+  border-bottom: 1px solid #ccd6dc;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-heading span {
+  color: #e36f4b;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #182a35;
+}
+
+.user-name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.user-name h3 {
+  margin: 0;
+  color: #182a35;
+}
+
+.animal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  padding-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    width: min(100% - 28px, 860px);
+    padding-top: 32px;
+  }
+
+  .page-header h1 {
+    font-size: 36px;
+  }
+}
