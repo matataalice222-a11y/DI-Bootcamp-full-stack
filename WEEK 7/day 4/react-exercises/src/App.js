@@ -1,5 +1,6 @@
 import UserFavoriteAnimals from './UserFavoriteAnimals.js'
 import Exercise from './Exercise3.js'
+import CityCarousel from './CityCarousel.js'
 import './App.css'
 
 const user = {
@@ -19,6 +20,8 @@ function App() {
         <h1>Exercises XP</h1>
         <p>JSX, component props, and styling in one small app.</p>
       </header>
+
+      <CityCarousel />
 
       <section className="exercise-section" aria-labelledby="jsx-title">
         <div className="section-heading">

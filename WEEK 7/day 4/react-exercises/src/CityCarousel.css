@@ -1,0 +1,96 @@
+.city-carousel-section {
+  padding: 28px 0 34px;
+}
+
+.carousel-heading {
+  margin-bottom: 18px;
+}
+
+.carousel-heading .eyebrow {
+  margin-bottom: 6px;
+}
+
+.carousel-heading h2 {
+  margin: 0 0 8px;
+  color: #182a35;
+  font-size: 30px;
+}
+
+.destination-carousel .carousel .slide {
+  overflow: hidden;
+  background: transparent;
+  text-align: left;
+}
+
+.destination-carousel .city-slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #26343d;
+}
+
+.destination-carousel .city-slide img {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 43vw, 430px);
+  object-fit: cover;
+}
+
+.city-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 68px 28px 28px;
+  color: #fff;
+  background: linear-gradient(transparent, rgb(10 24 32 / 82%));
+}
+
+.city-caption h3 {
+  margin: 10px 0 4px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.city-caption p {
+  max-width: 520px;
+}
+
+.destination-carousel .carousel .control-arrow {
+  width: 48px;
+  opacity: 0.9;
+}
+
+.destination-carousel .carousel .control-prev.control-arrow:before {
+  border-right: 8px solid #fff;
+}
+
+.destination-carousel .carousel .control-next.control-arrow:before {
+  border-left: 8px solid #fff;
+}
+
+.destination-carousel .carousel .control-dots {
+  bottom: 4px;
+}
+
+.destination-carousel .carousel .control-dots .dot {
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .destination-carousel .city-slide img {
+    height: 300px;
+  }
+
+  .city-caption {
+    padding: 56px 18px 24px;
+  }
+
+  .city-caption h3 {
+    font-size: 24px;
+  }
+
+  .city-caption p {
+    font-size: 14px;
+  }
+}
