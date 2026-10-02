@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import UserFavoriteAnimals from './UserFavoriteAnimals.js'
 import Exercise from './Exercise3.js'
 import CityCarousel from './CityCarousel.js'
@@ -19,14 +20,86 @@ const myelement = <h1>I Love JSX!</h1>
 const sum = 5 + 5
 
 function App() {
+  const [languages, setLanguages] = useState([
+    { name: 'Php', votes: 0 },
+    { name: 'Python', votes: 0 },
+    { name: 'JavaScript', votes: 0 },
+    { name: 'Java', votes: 0 },
+  ])
+
+  const castVote = (languageName) => {
+    setLanguages((currentLanguages) =>
+      currentLanguages.map((language) =>
+        language.name === languageName
+          ? { ...language, votes: language.votes + 1 }
+          : language,
+      ),
+    )
+  }
+
+  const totalVotes = languages.reduce((total, language) => total + language.votes, 0)
+  const highestVotes = Math.max(...languages.map((language) => language.votes))
+  const leadingLanguages = languages.filter(
+    (language) => highestVotes > 0 && language.votes === highestVotes,
+  )
+  const resultMessage =
+    leadingLanguages.length === 0
+      ? 'No votes yet'
+      : leadingLanguages.length > 1
+        ? `Tied: ${leadingLanguages.map((language) => language.name).join(', ')}`
+        : `${leadingLanguages[0].name} is leading`
+
   return (
     <main className="page">
       <header className="page-header">
-        <p className="eyebrow">React fundamentals / Week 7</p>
-        <h1>Exercises XP</h1>
-        <p>JSX, component props, and styling in one small app.</p>
+        <p className="eyebrow">Community poll</p>
+        <h1>Language Vote</h1>
+        <p>Choose the language you think deserves the top spot.</p>
       </header>
 
+      <section className="vote-section" aria-labelledby="vote-title">
+        <div className="vote-heading">
+          <div>
+            <h2 id="vote-title">Which language gets your vote?</h2>
+            <p>Votes update instantly.</p>
+          </div>
+          <div className="vote-total" aria-live="polite">
+            <strong>{totalVotes}</strong>
+            <span>Total votes</span>
+          </div>
+        </div>
+
+        <ol className="vote-list">
+          {languages.map((language) => (
+            <li className="vote-row" key={language.name}>
+              <div className="vote-language">
+                <span className="language-mark" aria-hidden="true">
+                  {language.name.slice(0, 2)}
+                </span>
+                <span className="vote-language-name">{language.name}</span>
+              </div>
+              <div className="vote-count">
+                <strong>{language.votes}</strong>
+                <span>{language.votes === 1 ? 'vote' : 'votes'}</span>
+              </div>
+              <button
+                aria-label={`Vote for ${language.name}`}
+                className="vote-button"
+                onClick={() => castVote(language.name)}
+                type="button"
+              >
+                Vote <span aria-hidden="true">+</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+
+        <p className="vote-result" aria-live="polite">{resultMessage}</p>
+      </section>
+
+      <details className="exercise-archive">
+        <summary>Previous React exercises</summary>
+        <div className="exercise-archive-content">
       <CityCarousel />
 
       <section className="exercise-section" aria-labelledby="jsx-title">
@@ -90,6 +163,8 @@ function App() {
         </div>
         <Color />
       </section>
+        </div>
+      </details>
     </main>
   )
 }
