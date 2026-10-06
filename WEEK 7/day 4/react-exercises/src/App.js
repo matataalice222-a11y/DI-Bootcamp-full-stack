@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import UserFavoriteAnimals from './UserFavoriteAnimals.js'
 import Exercise from './Exercise3.js'
 import CityCarousel from './CityCarousel.js'
@@ -6,7 +6,29 @@ import Car from './Components/Car.js'
 import Events from './Components/Events.js'
 import Phone from './Components/Phone.js'
 import Color from './Components/Color.js'
+import ErrorBoundary from './ErrorBoundary.js'
+import LifecycleExercises from './LifecycleExercises.js'
 import './App.css'
+
+class BuggyCounter extends Component {
+  state = { counter: 0 }
+
+  handleClick = () => {
+    this.setState(({ counter }) => ({ counter: counter + 1 }))
+  }
+
+  render() {
+    if (this.state.counter === 5) {
+      throw new Error('I crashed!')
+    }
+
+    return (
+      <button className="demo-button" onClick={this.handleClick} type="button">
+        Click me: {this.state.counter}
+      </button>
+    )
+  }
+}
 
 const carinfo = { name: 'Ford', model: 'Mustang' }
 
@@ -96,6 +118,38 @@ function App() {
 
         <p className="vote-result" aria-live="polite">{resultMessage}</p>
       </section>
+
+      <section className="exercise-section" aria-labelledby="error-boundary-title">
+        <div className="section-heading">
+          <span>08</span>
+          <h2 id="error-boundary-title">Error boundary simulations</h2>
+        </div>
+        <div className="lifecycle-grid">
+          <article className="lifecycle-card">
+            <h3>One boundary for both counters</h3>
+            <ErrorBoundary>
+              <BuggyCounter />
+              <BuggyCounter />
+            </ErrorBoundary>
+          </article>
+          <article className="lifecycle-card">
+            <h3>A boundary for each counter</h3>
+            <ErrorBoundary>
+              <BuggyCounter />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <BuggyCounter />
+            </ErrorBoundary>
+          </article>
+          <article className="lifecycle-card">
+            <h3>No error boundary</h3>
+            <p>Clicking this counter five times crashes the app tree.</p>
+            <BuggyCounter />
+          </article>
+        </div>
+      </section>
+
+      <LifecycleExercises />
 
       <details className="exercise-archive">
         <summary>Previous React exercises</summary>
