@@ -51,8 +51,15 @@ class FavoriteColor extends Component {
 }
 
 class Child extends Component {
+  componentDidMount() {
+    window.clearTimeout(this.unmountTimer)
+    this.unmountTimer = null
+  }
+
   componentWillUnmount() {
-    window.alert('The Child component is unmounted.')
+    this.unmountTimer = window.setTimeout(() => {
+      window.alert('The Child component is unmounted.')
+    }, 0)
   }
 
   render() {
