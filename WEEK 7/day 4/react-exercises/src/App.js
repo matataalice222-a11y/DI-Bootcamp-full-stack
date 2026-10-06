@@ -1,4 +1,5 @@
 import { Component, useState } from 'react'
+import FormComponent from './FormComponent.js'
 import UserFavoriteAnimals from './UserFavoriteAnimals.js'
 import Exercise from './Exercise3.js'
 import CityCarousel from './CityCarousel.js'
@@ -42,12 +43,36 @@ const myelement = <h1>I Love JSX!</h1>
 const sum = 5 + 5
 
 function App() {
+  const [formData, setFormData] = useState(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+
+    return {
+      firstName: searchParams.get('firstName') ?? '',
+      lastName: searchParams.get('lastName') ?? '',
+      age: searchParams.get('age') ?? '',
+      gender: searchParams.get('gender') ?? '',
+      destination: searchParams.get('destination') ?? '',
+      lactoseFree: searchParams.has('lactoseFree'),
+      vegan: searchParams.has('vegan'),
+      kosher: searchParams.has('kosher'),
+    }
+  })
   const [languages, setLanguages] = useState([
     { name: 'Php', votes: 0 },
     { name: 'Python', votes: 0 },
     { name: 'JavaScript', votes: 0 },
     { name: 'Java', votes: 0 },
   ])
+
+  const handleChange = (event) => {
+    const input = event.target
+    const { name, type, value, checked } = input
+
+    setFormData((currentFormData) => ({
+      ...currentFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
+  }
 
   const castVote = (languageName) => {
     setLanguages((currentLanguages) =>
@@ -78,6 +103,8 @@ function App() {
         <h1>Language Vote</h1>
         <p>Choose the language you think deserves the top spot.</p>
       </header>
+
+      <FormComponent formData={formData} handleChange={handleChange} />
 
       <section className="vote-section" aria-labelledby="vote-title">
         <div className="vote-heading">

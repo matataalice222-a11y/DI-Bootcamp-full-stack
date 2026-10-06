@@ -35,6 +35,118 @@
   border-bottom: 1px solid #ccd6dc;
 }
 
+.travel-form-section {
+  padding-top: 32px;
+}
+
+.travel-form-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.travel-form {
+  display: grid;
+  gap: 16px;
+}
+
+.travel-form-field {
+  display: grid;
+  gap: 6px;
+  color: #182a35;
+  font-weight: 700;
+}
+
+.travel-form-field input,
+.travel-form-field select {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #8999a1;
+  border-radius: 4px;
+  color: #26343d;
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.travel-form-field input:focus-visible,
+.travel-form-field select:focus-visible,
+.travel-form-option input:focus-visible {
+  outline: 3px solid #e36f4b;
+  outline-offset: 2px;
+}
+
+.travel-form-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #ccd6dc;
+  border-radius: 4px;
+}
+
+.travel-form-options legend {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0 4px;
+  color: #182a35;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.travel-form-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.travel-form-option input {
+  accent-color: #155f95;
+}
+
+.travel-form-submit {
+  justify-self: start;
+}
+
+.travel-form-output {
+  padding: 20px;
+  border-left: 3px solid #155f95;
+  background: #e6eeea;
+}
+
+.travel-form-output h3 {
+  margin: 0 0 16px;
+  color: #182a35;
+}
+
+.travel-form-output dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.travel-form-output dl > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) minmax(0, 1.4fr);
+  gap: 12px;
+}
+
+.travel-form-output dt {
+  color: #52636b;
+  font-weight: 400;
+}
+
+.travel-form-output dd {
+  margin: 0;
+  color: #182a35;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
 .lifecycle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
