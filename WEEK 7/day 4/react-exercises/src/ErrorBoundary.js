@@ -1,19 +1,15 @@
 import { Component } from 'react'
 
 class ErrorBoundary extends Component {
-  state = { error: null, errorInfo: null }
-
-  static getDerivedStateFromError(error) {
-    return { error }
-  }
+  state = { hasError: false, error: null, errorInfo: null }
 
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by ErrorBoundary:', error, errorInfo)
-    this.setState({ error, errorInfo })
+    this.setState({ hasError: true, error, errorInfo })
   }
 
   render() {
-    if (this.state.error) {
+    if (this.state.hasError) {
       return (
         <div className="error-fallback" role="alert">
           <h4>Something went wrong.</h4>

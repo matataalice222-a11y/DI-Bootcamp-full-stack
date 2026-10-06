@@ -35,6 +35,85 @@
   border-bottom: 1px solid #ccd6dc;
 }
 
+.page > .navbar {
+  margin-bottom: 24px;
+}
+
+.navbar .nav-link.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+.parsed-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+}
+
+.parsed-data-card,
+.post-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #ccd6dc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.parsed-data-card h3,
+.post-card h3 {
+  margin: 0 0 12px;
+  color: #182a35;
+}
+
+.parsed-data-card h4,
+.parsed-data-card h5 {
+  margin: 14px 0 8px;
+  color: #182a35;
+  font-size: 16px;
+}
+
+.parsed-data-card p {
+  margin-bottom: 6px;
+}
+
+.parsed-data-card ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 20px;
+  overflow-wrap: anywhere;
+}
+
+.experience-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.post-list {
+  display: grid;
+  gap: 12px;
+}
+
+.webhook-form {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+}
+
+.webhook-error {
+  margin-top: 12px;
+  color: #b42318;
+}
+
+.webhook-response {
+  margin: 16px 0 0;
+  padding: 14px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  color: #182a35;
+  background: #e6eeea;
+}
+
 .travel-form-section {
   padding-top: 32px;
 }

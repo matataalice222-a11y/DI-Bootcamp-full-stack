@@ -1,5 +1,11 @@
 import { Component, useState } from 'react'
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import FormComponent from './FormComponent.js'
+import Example1 from './Example1.js'
+import Example2 from './Example2.js'
+import Example3 from './Example3.js'
+import PostList from './PostList.js'
 import UserFavoriteAnimals from './UserFavoriteAnimals.js'
 import Exercise from './Exercise3.js'
 import CityCarousel from './CityCarousel.js'
@@ -42,7 +48,7 @@ const user = {
 const myelement = <h1>I Love JSX!</h1>
 const sum = 5 + 5
 
-function App() {
+function AppContent() {
   const [formData, setFormData] = useState(() => {
     const searchParams = new URLSearchParams(window.location.search)
 
@@ -63,6 +69,9 @@ function App() {
     { name: 'JavaScript', votes: 0 },
     { name: 'Java', votes: 0 },
   ])
+  const [webhookUrl, setWebhookUrl] = useState('')
+  const [postResult, setPostResult] = useState('')
+  const [postError, setPostError] = useState('')
 
   const handleChange = (event) => {
     const input = event.target
@@ -72,6 +81,53 @@ function App() {
       ...currentFormData,
       [name]: type === 'checkbox' ? checked : value,
     }))
+  }
+
+  const handlePost = async (event) => {
+    event.preventDefault()
+    setPostResult('')
+    setPostError('')
+
+    try {
+      const endpoint = new URL(webhookUrl)
+      if (endpoint.protocol !== 'https:') {
+        throw new Error('Use the HTTPS URL provided by webhook.site.')
+      }
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          key1: 'myusername',
+          email: 'mymail@gmail.com',
+          name: 'Isaac',
+          lastname: 'Doe',
+          age: 27,
+        }),
+      })
+
+      const responseText = await response.text()
+      if (!response.ok) {
+        throw new Error(`Webhook request failed with status ${response.status}.`)
+      }
+
+      let responseData = responseText
+      try {
+        responseData = JSON.parse(responseText)
+      } catch {
+        // Webhook responses may be plain text rather than JSON.
+      }
+
+      console.log(responseData)
+      setPostResult(
+        typeof responseData === 'string'
+          ? responseData || 'Webhook accepted the request.'
+          : JSON.stringify(responseData, null, 2),
+      )
+    } catch (error) {
+      console.error('Could not post JSON data:', error)
+      setPostError(error instanceof Error ? error.message : 'The webhook request failed.')
+    }
   }
 
   const castVote = (languageName) => {
@@ -98,6 +154,50 @@ function App() {
 
   return (
     <main className="page">
+      <nav className="navbar navbar-expand navbar-dark bg-dark rounded">
+        <div className="container-fluid">
+          <NavLink className="navbar-brand" to="/">React exercises</NavLink>
+          <div className="navbar-nav">
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} end to="/">
+              Home
+            </NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/profile">
+              Profile
+            </NavLink>
+            <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/shop">
+              Shop
+            </NavLink>
+          </div>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ErrorBoundary>
+              <HomeScreen />
+            </ErrorBoundary>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ErrorBoundary>
+              <ProfileScreen />
+            </ErrorBoundary>
+          }
+        />
+        <Route
+          path="/shop"
+          element={
+            <ErrorBoundary>
+              <ShopScreen />
+            </ErrorBoundary>
+          }
+        />
+      </Routes>
+
       <header className="page-header">
         <p className="eyebrow">Community poll</p>
         <h1>Language Vote</h1>
@@ -105,6 +205,52 @@ function App() {
       </header>
 
       <FormComponent formData={formData} handleChange={handleChange} />
+
+      <section className="exercise-section" aria-labelledby="posts-title">
+        <div className="section-heading">
+          <span>10</span>
+          <h2 id="posts-title">Posts from JSON</h2>
+        </div>
+        <PostList />
+      </section>
+
+      <section className="exercise-section" aria-labelledby="profile-data-title">
+        <div className="section-heading">
+          <span>11</span>
+          <h2 id="profile-data-title">Parsed profile data</h2>
+        </div>
+        <div className="parsed-data-grid">
+          <Example1 />
+          <Example2 />
+          <Example3 />
+        </div>
+      </section>
+
+      <section className="exercise-section" aria-labelledby="post-data-title">
+        <div className="section-heading">
+          <span>12</span>
+          <h2 id="post-data-title">Post JSON data</h2>
+        </div>
+        <form className="webhook-form" onSubmit={handlePost}>
+          <label className="travel-form-field" htmlFor="webhook-url">
+            Your webhook.site unique URL
+            <input
+              autoComplete="url"
+              id="webhook-url"
+              onChange={(event) => setWebhookUrl(event.target.value)}
+              placeholder="https://webhook.site/your-unique-id"
+              required
+              type="url"
+              value={webhookUrl}
+            />
+          </label>
+          <button className="demo-button" type="submit">Send JSON data</button>
+        </form>
+        {postError && <p className="webhook-error" role="alert">{postError}</p>}
+        {postResult && (
+          <pre className="webhook-response" aria-live="polite">{postResult}</pre>
+        )}
+      </section>
 
       <section className="vote-section" aria-labelledby="vote-title">
         <div className="vote-heading">
@@ -247,6 +393,34 @@ function App() {
         </div>
       </details>
     </main>
+  )
+}
+
+function HomeScreen() {
+  return (
+    <header className="page-header">
+      <h1>Home</h1>
+    </header>
+  )
+}
+
+function ProfileScreen() {
+  return (
+    <header className="page-header">
+      <h1>Profile</h1>
+    </header>
+  )
+}
+
+function ShopScreen() {
+  throw new Error('Shop is currently unavailable.')
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   )
 }
 
