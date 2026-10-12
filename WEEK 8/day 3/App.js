@@ -1,37 +1,20 @@
-import React, { useContext } from "react";
-import ThemeContext, { ThemeProvider } from "./ThemeContext";
-import ThemeSwitcher from "./ThemeSwitcher";
-import CharacterCounter from "./CharacterCounter";
+import React from "react";
+import { TaskProvider } from "./TaskContext";
+import TaskInput from "./TaskInput";
+import TaskFilter from "./TaskFilter";
+import TaskList from "./TaskList";
 
-function AppContent() {
-  const { theme } = useContext(ThemeContext);
-
-  const styles = {
-    backgroundColor: theme === "light" ? "#ffffff" : "#333333",
-    color: theme === "light" ? "#111111" : "#ffffff",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "24px",
-    padding: "20px",
-    transition: "all 0.3s ease",
-  };
-
+function App() {
   return (
-    <div style={styles}>
-      <h1>{theme === "light" ? "Light Theme" : "Dark Theme"}</h1>
-      <ThemeSwitcher />
-      <CharacterCounter />
-    </div>
+    <TaskProvider>
+      <div style={{ maxWidth: "600px", margin: "40px auto", fontFamily: "Arial, sans-serif" }}>
+        <h1>Task Manager</h1>
+        <TaskInput />
+        <TaskFilter />
+        <TaskList />
+      </div>
+    </TaskProvider>
   );
 }
 
-export default function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
-}
+export default App;
