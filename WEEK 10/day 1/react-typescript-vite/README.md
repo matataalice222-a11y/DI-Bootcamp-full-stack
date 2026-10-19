@@ -1,32 +1,27 @@
-# React + TypeScript + Vite
+# Book Nook
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small book-list app built with React and TypeScript. It demonstrates a generic
+`List<T>` component that can render different kinds of data using a caller
+provided `renderItem` function.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Starts with a few sample books.
+- Add books with a title and author.
+- Uses a typed `Book` model and stable unique IDs.
+- Shows a live count of books on the shelf.
+- Responsive layout with labeled form fields and accessible feedback.
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Run the production build and lint checks with:
+
+```sh
+npm run build
+npm run lint
+```

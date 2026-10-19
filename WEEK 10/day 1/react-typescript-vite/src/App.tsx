@@ -35,13 +35,17 @@ function BookApp() {
   const [books, setBooks] = useState<Book[]>(initialBooks)
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
+  const [formError, setFormError] = useState('')
 
   function addBook(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const trimmedTitle = title.trim()
     const trimmedAuthor = author.trim()
-    if (!trimmedTitle || !trimmedAuthor) return
+    if (!trimmedTitle || !trimmedAuthor) {
+      setFormError('Enter both a book title and an author.')
+      return
+    }
 
     const newBook: Book = {
       id: crypto.randomUUID(),
@@ -52,6 +56,7 @@ function BookApp() {
     setBooks((currentBooks) => [...currentBooks, newBook])
     setTitle('')
     setAuthor('')
+    setFormError('')
   }
 
   return (
@@ -81,7 +86,10 @@ function BookApp() {
             <input
               autoComplete="off"
               name="title"
-              onChange={(event) => setTitle(event.target.value)}
+              onChange={(event) => {
+                setTitle(event.target.value)
+                setFormError('')
+              }}
               placeholder="e.g. The Midnight Library"
               required
               value={title}
@@ -92,13 +100,21 @@ function BookApp() {
             <input
               autoComplete="off"
               name="author"
-              onChange={(event) => setAuthor(event.target.value)}
+              onChange={(event) => {
+                setAuthor(event.target.value)
+                setFormError('')
+              }}
               placeholder="e.g. Matt Haig"
               required
               value={author}
             />
           </label>
           <button type="submit">Add to my shelf <span aria-hidden="true">↗</span></button>
+          {formError && (
+            <p className="form-error" role="alert">
+              {formError}
+            </p>
+          )}
         </form>
       </section>
 
