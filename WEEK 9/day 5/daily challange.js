@@ -5,7 +5,7 @@ const initialCategories = [
   { id: "personal", name: "Personal", color: "#b77955" },
   { id: "learning", name: "Learning", color: "#6e70a5" },
 ];
-
+ 
 const initialTasks = [
   {
     id: "task-1",
