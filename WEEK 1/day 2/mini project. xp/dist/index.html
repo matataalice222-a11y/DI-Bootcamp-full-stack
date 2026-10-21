@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Save, organize, and revisit your favorite recipes."
+    />
+    <title>Recipe Book</title>
+    <script type="module" crossorigin src="/assets/index-DIGHE-k0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B4orofDt.css">
+  </head>
+  <body>
+    <main class="recipe-app">
+      <header class="page-header">
+        <p class="eyebrow">Your personal cookbook</p>
+        <h1>Recipe Book</h1>
+        <p class="intro">Keep the recipes you love, all in one place.</p>
+      </header>
+
+      <section class="entry-panel" aria-labelledby="add-recipe-heading">
+        <h2 id="add-recipe-heading">Add a recipe</h2>
+        <form id="recipeEntryForm">
+          <label for="recipeTitle">Recipe title</label>
+          <input
+            type="text"
+            id="recipeTitle"
+            placeholder="e.g. Sunday tomato pasta"
+            required
+            maxlength="120"
+          />
+
+          <label for="ingredients">Ingredients</label>
+          <textarea
+            id="ingredients"
+            placeholder="Enter ingredients (one per line)"
+            rows="5"
+            required
+          ></textarea>
+
+          <label for="instructions">Instructions</label>
+          <textarea
+            id="instructions"
+            placeholder="Enter cooking instructions"
+            rows="5"
+            required
+          ></textarea>
+
+          <button class="button button-primary" type="submit">Add recipe</button>
+        </form>
+      </section>
+
+      <section class="collection-panel" aria-labelledby="collection-heading">
+        <div class="collection-header">
+          <div>
+            <p class="eyebrow">Made by you</p>
+            <h2 id="collection-heading">Your recipes</h2>
+          </div>
+          <button
+            id="clearRecipesButton"
+            class="button button-subtle"
+            type="button"
+          >
+            Clear all
+          </button>
+        </div>
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+        <div id="recipeContainer" class="recipe-grid"></div>
+      </section>
+    </main>
+  </body>
+</html>
