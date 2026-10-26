@@ -1,0 +1,14 @@
+{
+  "name": "collaborative-storytelling",
+  "private": true,
+  "workspaces": ["types", "backend", "frontend"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c green,cyan \"npm:dev --workspace backend\" \"npm:dev --workspace frontend\"",
+    "build": "npm run build --workspace types && npm run build --workspace backend && npm run build --workspace frontend",
+    "test": "npm test --workspace backend",
+    "migrate": "npm run migrate --workspace backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
